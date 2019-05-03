@@ -1,4 +1,4 @@
-package com.nagarro.internalportal.messaging;
+package com.nagarro.common.dto;
 
 import com.google.gson.Gson;
 

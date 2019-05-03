@@ -1,6 +1,6 @@
 package com.nagarro.internalportal.handler;
 
-import com.nagarro.nagp.rabbitmqclient.BaseMessage;
+import com.nagarro.common.BaseMessage;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -12,7 +12,7 @@ public class AsyncResponseHolder {
     private final Runnable onDone;
     private final CompletableFuture<BaseMessage> future = new CompletableFuture();
 
-    public AsyncResponseHolder(String  correlationId, Runnable onDone) {
+    public AsyncResponseHolder(String correlationId, Runnable onDone) {
         this.correlationId = correlationId;
         this.onDone = onDone;
     }
@@ -26,7 +26,7 @@ public class AsyncResponseHolder {
     }
 
     public BaseMessage response(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-            return (BaseMessage) this.future.get(timeout, unit);
+        return (BaseMessage) this.future.get(timeout, unit);
 
     }
 

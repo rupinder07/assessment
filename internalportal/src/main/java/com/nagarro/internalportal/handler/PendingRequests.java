@@ -1,6 +1,6 @@
 package com.nagarro.internalportal.handler;
 
-import com.nagarro.common.messaging.BaseMessage;
+import com.nagarro.common.BaseMessage;
 
 import java.util.Map;
 import java.util.Optional;

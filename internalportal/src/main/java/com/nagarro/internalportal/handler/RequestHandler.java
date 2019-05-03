@@ -1,7 +1,7 @@
 package com.nagarro.internalportal.handler;
 
+import com.nagarro.common.BaseMessage;
 import com.nagarro.common.RabbitMqManager;
-import com.nagarro.common.messaging.BaseMessage;
 import com.nagarro.internalportal.MessagingException;
 
 import java.io.IOException;

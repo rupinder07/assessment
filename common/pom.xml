@@ -7,6 +7,12 @@
     <groupId>com.nagarro</groupId>
     <artifactId>common</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <postgresql.version>9.3-1102-jdbc41</postgresql.version>
+    </properties>
+
+
     <build>
         <plugins>
             <plugin>
@@ -32,6 +38,31 @@
             <version>1.7.25</version>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-jdbi</artifactId>
+            <version>2.0.0-rc1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.nagarro.nagp</groupId>
+            <artifactId>rabbit-mq-client</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+
     </dependencies>
 
 

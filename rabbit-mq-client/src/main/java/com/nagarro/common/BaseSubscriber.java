@@ -1,8 +1,6 @@
-package com.nagarro.internalportal.messaging;
+package com.nagarro.common;
 
 import com.google.common.collect.Lists;
-import com.nagarro.common.BaseMessage;
-import com.nagarro.common.MessageSubscriber;
 
 import java.util.List;
 

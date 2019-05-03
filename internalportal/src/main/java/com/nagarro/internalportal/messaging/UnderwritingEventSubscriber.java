@@ -1,51 +1,39 @@
 package com.nagarro.internalportal.messaging;
 
+import com.nagarro.common.BaseMessage;
+import com.nagarro.common.ServiceSubscriber;
 import com.nagarro.internalportal.handler.AsyncResponseHolder;
-import com.nagarro.nagp.rabbitmqclient.BaseMessage;
-import com.nagarro.nagp.rabbitmqclient.RabbitMqManager;
 
-import java.io.IOException;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class InventoryEventSubscriber implements ServiceSubscriber {
+public class UnderwritingEventSubscriber implements ServiceSubscriber {
 
-    private static final String INVENTORY_AVAILABLE = "msg.event.inventory.available";
-    private static final String INVENTORY_UNAVAILABLE = "msg.event.inventory.unavailable";
+    private static final String UNDERWRITING_UPDATED = "msg.event.underwriting.updated";
 
     private final Function<String, Optional<AsyncResponseHolder>> pendingRequests;
 
-    public InventoryEventSubscriber(final Function<String, Optional<AsyncResponseHolder>> pendingRequests) {
+    public UnderwritingEventSubscriber(final Function<String, Optional<AsyncResponseHolder>> pendingRequests) {
         this.pendingRequests = pendingRequests;
     }
 
     @Override
     public boolean supports(final String routingKey) {
-        return INVENTORY_AVAILABLE.equalsIgnoreCase(routingKey) ||
-                INVENTORY_UNAVAILABLE.equalsIgnoreCase(routingKey);
+        return UNDERWRITING_UPDATED.equalsIgnoreCase(routingKey);
     }
 
     @Override
     public void handleMessage(final BaseMessage message) {
         final String correlationId = message.getCorrelationId();
-        try{
-            if(message.getRoutingKey().equalsIgnoreCase(INVENTORY_AVAILABLE)){
-                RabbitMqManager.publishMessage("msg.command.shipping.create",
-                        message.getBody(),
-                        message.getHeaders());
-                assignResponse(correlationId, message);
-            } else{
-                RabbitMqManager.publishMessage("msg.event.product.unavailable", message.getBody(), message.getHeaders());
-                assignError(correlationId, message);
-            }
-        } catch (IOException e){
-            // do nothing
+        if (message.getRoutingKey().equalsIgnoreCase(UNDERWRITING_UPDATED)) {
+            //update the local copy
+            assignResponse(correlationId, message);
         }
         assignResponse(correlationId, message);
     }
 
     private void assignResponse(final String correlationId,
-                                  final BaseMessage response) {
+                                final BaseMessage response) {
         if (null != correlationId) {
             final Optional<AsyncResponseHolder> async = pendingRequests.apply(correlationId);
             if (async.isPresent()) {
@@ -56,7 +44,7 @@ public class InventoryEventSubscriber implements ServiceSubscriber {
     }
 
     private void assignError(final String correlationId,
-                                final BaseMessage response) {
+                             final BaseMessage response) {
         if (null != correlationId) {
             final Optional<AsyncResponseHolder> async = pendingRequests.apply(correlationId);
             if (async.isPresent()) {

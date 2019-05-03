@@ -20,3 +20,44 @@ rabbitMq:
       inventory-available-event:
           - msg.event.inventory.available
           - msg.event.inventory.unavailable
+
+database:
+  # the name of your JDBC driver
+    driverClass: org.postgresql.Driver
+
+    # the username
+    user: internalportal
+
+    # the password
+    password: internalportal
+
+    # the JDBC URL
+    url: jdbc:postgresql://localhost:5432/internalportal
+
+    # any properties specific to your JDBC driver:
+    properties:
+      charSet: UTF-8
+
+    # the maximum amount of time to wait on an empty pool before throwing an exception
+    maxWaitForConnection: 1s
+
+    # the SQL query to run when validating a connection's liveness
+    validationQuery: "SELECT 1"
+
+    # the minimum number of connections to keep open
+    minSize: 1
+
+    # number to start on startup
+    initialSize: 1
+
+    # the maximum number of connections to keep open
+    maxSize: 21
+
+    # whether or not idle connections should be validated
+    checkConnectionWhileIdle: true
+
+    # the amount of time to sleep between runs of the idle connection validation, abandoned cleaner and idle pool resizing
+    evictionInterval: 10s
+
+    # the minimum amount of time an connection must sit idle in the pool before it is eligible for eviction
+    minIdleTime: 1 minute

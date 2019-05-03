@@ -3,7 +3,7 @@ package com.nagarro.policyservice;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nagarro.common.RabbitMQConfiguration;
 import io.dropwizard.Configuration;
-import io.dropwizard.db.DataSourceFactory;
+
 
 class PolicyConfiguration extends Configuration {
 

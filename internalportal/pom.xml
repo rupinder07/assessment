@@ -31,21 +31,19 @@
         </dependency>
 
         <dependency>
-            <groupId>com.nagarro.nagp</groupId>
-            <artifactId>rabbit-mq-client</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.5</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.nagarro</groupId>
             <artifactId>common</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-migrations</artifactId>
+            <version>1.3.7</version>
+        </dependency>
+        <dependency>
+            <groupId>de.thomaskrille</groupId>
+            <artifactId>dropwizard-template-config</artifactId>
+            <version>1.5.0</version>
         </dependency>
 
 

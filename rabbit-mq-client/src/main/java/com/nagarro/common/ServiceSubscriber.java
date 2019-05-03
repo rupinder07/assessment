@@ -1,6 +1,4 @@
-package com.nagarro.internalportal.messaging;
-
-import com.nagarro.common.BaseMessage;
+package com.nagarro.common;
 
 public interface ServiceSubscriber {
 

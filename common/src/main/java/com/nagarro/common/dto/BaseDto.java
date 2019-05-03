@@ -1,6 +1,6 @@
 package com.nagarro.common.dto;
 
-public abstract class BaseDto {
+public abstract class BaseDto implements JsonContent{
 
     private final String id;
     private final String version;
