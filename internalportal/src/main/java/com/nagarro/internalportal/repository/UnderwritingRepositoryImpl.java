@@ -15,6 +15,10 @@ public class UnderwritingRepositoryImpl implements UnderwritingRepository {
 
     @Override
     public List<Underwriting> getAll() {
-        return null;
+        final String query = "Select * from application_underwriting";
+        return datasource.open()
+                .createQuery(query)
+                .map(new UnderwritingMapper())
+                .list();
     }
 }

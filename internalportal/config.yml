@@ -2,8 +2,8 @@ server:
   type: simple
   connector:
       type: http
-      port: 8010
-  applicationContextPath: /order-service
+      port: 7010
+  applicationContextPath: /internal-portal
   adminContextPath: /admin
   #disable the registration of default Jersey ExceptionMappers
   registerDefaultExceptionMappers: false
@@ -13,13 +13,12 @@ rabbitMq:
   port: 5672
   username: "guest"
   password: "guest"
-  exchangeName: "nagp"
+  exchangeName: "nagarro"
   topicNames:
-      - "inventory-available-event"
+      - "policy-event"
   messageSubscriptions:
-      inventory-available-event:
-          - msg.event.inventory.available
-          - msg.event.inventory.unavailable
+      policy-event:
+          - msg.event.policy.updated
 
 database:
   # the name of your JDBC driver

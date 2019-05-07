@@ -1,13 +1,12 @@
 package com.nagarro.common.dropwizard;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nagarro.common.RabbitMQConfiguration;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
 
 public class BaseConfiguration extends Configuration {
 
-    private DataSourceFactory database;
+    private DataSourceFactory database = new DataSourceFactory();
 
     private RabbitMQConfiguration rabbitMq;
 

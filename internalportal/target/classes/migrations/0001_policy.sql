@@ -12,4 +12,4 @@ CREATE TABLE application_underwriting (
      updated_by TIMESTAMP
 );
 
-insert into application_underwriting values('1', 'abcd', 'app1', 'underwrtiting data', 'in_progress', LOCALTIMESTAMP(2), null, null);
+insert into application_underwriting values('1', 'abcd', 'app1', 'underwrtiting data', 'in_progress', LOCALTIMESTAMP(2), LOCALTIMESTAMP(2), null);

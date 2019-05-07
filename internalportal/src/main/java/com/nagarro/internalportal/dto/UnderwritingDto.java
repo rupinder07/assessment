@@ -7,6 +7,7 @@ import com.nagarro.internalportal.domain.Underwriting;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class UnderwritingDto extends TimestampedDto {
 
@@ -34,8 +35,10 @@ public class UnderwritingDto extends TimestampedDto {
     public UnderwritingDto(final Underwriting writing) {
         super(writing.getId(),
                 writing.getVersion(),
-                writing.getCreationTime().format(DateTimeFormatter.BASIC_ISO_DATE),
-                writing.getUpdationTime().format(DateTimeFormatter.BASIC_ISO_DATE));
+                writing.getCreationTime().format(DateTimeFormatter.ISO_DATE_TIME),
+                Objects.isNull(writing.getUpdationTime())
+                        ? null
+                        : writing.getUpdationTime().format(DateTimeFormatter.ISO_DATE_TIME));
         this.applicationId = writing.getApplicationId();
         this.data = writing.getData();
         this.status = writing.getStatus();
